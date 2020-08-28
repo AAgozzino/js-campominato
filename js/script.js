@@ -18,13 +18,21 @@ var listaNumUtente = [];
 var numeroUtente
 var i = 0;
 
-do {
+while (listaNumUtente.length < 5 && listaNumRandomPc.indexOf(numeroUtente) == -1) {
   numeroUtente = parseInt(prompt("Inserisci un numero da 1 a 100"));
   listaNumUtente.push(numeroUtente);
   i++;
-} while (listaNumUtente.length < 5 && listaNumUtente.indexOf(numeroUtente) >= 0);
-
+};
 console.log(listaNumUtente);
+
+//
+
+// do {
+//   numeroUtente = parseInt(prompt("Inserisci un numero da 1 a 100"));
+//   listaNumUtente.push(numeroUtente);
+//   i++;
+// } while (listaNumUtente.length < 5 || listaNumRandomPc.includes(numeroUtente) == false);
+
 //Continuo a chiedere all'utente un numero tra 1 e 100 finché
 // numeroUtente == numeroPC
 // lunghezza lista numeriUtente == 84
