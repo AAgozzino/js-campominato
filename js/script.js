@@ -15,8 +15,11 @@ for (var i = 0; listaNumRandomPc.length < bombe; i++) {
 console.log(listaNumRandomPc);
 
 
-//Chiedo all'utente di inserire 84 numeri compresi tra 1 e 100
-//I numeri devono essere tutti diversi
+//Continuo a chiedere all'utente un numero tra 1 e 100 finché
+// numeroUtente == numeroPC
+// lunghezza lista numeriUtente == 84
+  //I numeri devono essere tutti diversi
+  //I numeri devono essere compresi tra 1 e 100
 var listaNumUtente = [];
 var numeroUtente
 var i = 0;
@@ -34,9 +37,12 @@ while (listaNumUtente.length < tentativi && listaNumRandomPc.indexOf(numeroUtent
 };
 console.log(listaNumUtente);
 
-
-//Continuo a chiedere all'utente un numero tra 1 e 100 finché
-// numeroUtente == numeroPC
-// lunghezza lista numeriUtente == 84
-
 //Comunicare il punteggio == lunghezza lista numeriUtente
+  // Se listaNumUtente.length == tentativi -> HAI VINTO
+  // Altrimenti -> HAI PERSO - il tuo livello è listaNumUtente.lenght -1
+var livello = listaNumUtente.length - 1;
+if (livello == tentativi) {
+  console.log("HAI VINTO!!!");
+} else {
+  console.log("HAI PERSO - Il tuo livello è: " + livello);
+};
