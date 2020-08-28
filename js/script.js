@@ -24,13 +24,16 @@ var listaNumUtente = [];
 var numeroUtente
 var i = 0;
 
-while (listaNumUtente.length < tentativi && listaNumRandomPc.indexOf(numeroUtente) == -1) {
+// && listaNumRandomPc.indexOf(numeroUtente) == -1
+while (listaNumUtente.length < tentativi) {
   numeroUtente = parseInt(prompt("Inserisci un numero da 1 a 100"));
   if (numeroUtente < 1 || numeroUtente > 100) {
     alert("Attenzione: Inserisci un numero tra 1 e 100!!!");
   } else if (listaNumUtente.indexOf(numeroUtente) >= 0) {
     alert("Attenzione: numero già inserito!!!");
-  } else {
+  } else if (listaNumRandomPc.indexOf(numeroUtente) != -1) {
+    break;
+  }else {
     listaNumUtente.push(numeroUtente);
   };
   i++;
@@ -40,9 +43,8 @@ console.log(listaNumUtente);
 //Comunicare il punteggio == lunghezza lista numeriUtente
   // Se listaNumUtente.length == tentativi -> HAI VINTO
   // Altrimenti -> HAI PERSO - il tuo livello è listaNumUtente.lenght -1
-var livello = listaNumUtente.length - 1;
-if (livello == tentativi) {
+if (listaNumUtente.length == tentativi) {
   console.log("HAI VINTO!!!");
 } else {
-  console.log("HAI PERSO - Il tuo livello è: " + livello);
+  console.log("HAI PERSO - Il tuo livello è: " + listaNumUtente.length);
 };
