@@ -1,27 +1,31 @@
 // Genero 16 numeri da 1 a 100
 //I numeri devono essere tutti diversi
-var numRandomPc = [];
+var listaNumRandomPc = [];
 
-for (var i = 0; numRandomPc.length < 10; i++) {
+for (var i = 0; listaNumRandomPc.length < 10; i++) {
   var numRandom = Math.floor(Math.random() * 100) + 1;
-  if (numRandomPc.indexOf(numRandom) == -1) {
-    numRandomPc.push(numRandom);
+  if (listaNumRandomPc.indexOf(numRandom) == -1) {
+    listaNumRandomPc.push(numRandom);
   };
   console.log(numRandom);
 };
-console.log(numRandomPc);
-// while (numRandomPc.lenght < 16) {
-//   var numRandom = Math.floor(Math.random() * 100) + 1;
-//   numRandomPc.push(numRandom);
-//   i++;
-// }
+console.log(listaNumRandomPc);
 
-//console.log(numRandomPc);
 
 //Chiedo all'utente di inserire 84 numeri compresi tra 1 e 100
 //I numeri devono essere tutti diversi
+var listaNumUtente = [];
+var numeroUtente
+var i = 0;
 
-//Continuo a chiedere all'utente un numero nuovo finché
+do {
+  numeroUtente = parseInt(prompt("Inserisci un numero da 1 a 100"));
+  listaNumUtente.push(numeroUtente);
+  i++;
+} while (listaNumUtente.length < 5 && listaNumUtente.indexOf(numeroUtente) >= 0);
+
+console.log(listaNumUtente);
+//Continuo a chiedere all'utente un numero tra 1 e 100 finché
 // numeroUtente == numeroPC
 // lunghezza lista numeriUtente == 84
 
