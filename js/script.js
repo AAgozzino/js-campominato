@@ -3,24 +3,40 @@ var livello = parseInt(prompt("Scegli il tuo livello di difficoltà inserendo 0,
 var celle;
 var bombe = 16
 
-if (livello == 0) {
-  celle = 100;
-} else if (livello == 1) {
-  celle = 80;
-} else {
-  celle = 50;
-}
+switch (livello) {
+  case 0:
+    celle = 100;
+    break;
+  case 1:
+    celle = 80;
+    break;
+  case 2:
+    celle = 50;
+    break;
+  default:
+    celle = 17;
+};
+
 var tentativi = celle - bombe;
 
 //FUNZIONE - Generatore numeri casuali da 1 a 100
 function numGenerator(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + 1;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
 //FUNZIONE - Check element in array
 function elementInArray(element, array) {
-  return array.indexOf(element);
+  var trovato = false;
+  var i = 0;
+  while (i < array.length && trovato == false) {
+    if (array[i] == element) {
+      trovato = true;
+    }
+    i++
+  }
+  return trovato;
 }
+
 // Genero 16 numeri da 1 a 100
 //I numeri devono essere tutti diversi
 var listaNumRandomPc = [];
@@ -28,7 +44,7 @@ var listaNumRandomPc = [];
 for (var i = 0; listaNumRandomPc.length < bombe; i++) {
   var numRandom = numGenerator(1, celle);
   var checkElement = elementInArray(numRandom, listaNumRandomPc);
-  if (checkElement == -1) {
+  if (checkElement == false) {
     listaNumRandomPc.push(numRandom);
   };
   console.log(numRandom);
@@ -42,23 +58,22 @@ console.log(listaNumRandomPc);
   //I numeri devono essere compresi tra 1 e 100
   // numeroUtente == numeroPC -> break
 var listaNumUtente = [];
-var numeroUtente
-var i = 0;
+var numeroUtente;
+var bombaEsplosa = false
 
-while (listaNumUtente.length < tentativi) {
+while (listaNumUtente.length < tentativi && bombaEsplosa == false) {
   numeroUtente = parseInt(prompt("Inserisci un numero da 1 a " + celle));
-  var checkDouble = elementInArray(numeroUtente, listaNumUtente);
+  var checkInArray = elementInArray(numeroUtente, listaNumUtente);
   var checkBomb = elementInArray(numeroUtente, listaNumRandomPc);
   if (numeroUtente < 1 || numeroUtente > celle || isNaN(numeroUtente) == true) {
     alert("Attenzione: Inserisci un numero tra 1 e " + celle);
-  } else if (checkDouble >= 0) {
+  } else if (checkInArray == true) {
     alert("Attenzione: numero già inserito!!!");
-  } else if (checkBomb != -1) {
-    break;
+  } else if (checkBomb == true) {
+    bombaEsplosa = true
   }else {
     listaNumUtente.push(numeroUtente);
   };
-  i++;
 };
 console.log(listaNumUtente);
 
